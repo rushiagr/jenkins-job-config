@@ -1,0 +1,20 @@
+If a new change is found at origin/master:
+  Try to rebase jiocloud/master on origin/master.
+  Rebase succeeds:
+    Run tests
+    Push the rebased branch to jiocloud/master.
+    jiocloud/master changes, which will trigger another build.
+    Merge origin/master with jiocloud/devmaster:
+    Merge succeeds:
+      push this merged branch to jiocloud/devmaster.
+    Merge fails:
+      IMplies a patch applied on jiocloud/devmaster is not allowing a merge. Fix it manually on jiocloud/devmaster and rerun this test.
+  Rebase failed:
+    User manually fixes the rebase and pushes to jiocloud/manualmaster.
+    jiocloud/manualmaster changes, which will trigger another build.
+
+If a new change is found at jiocloud/manualmaster:
+  Run tests, and if they pass, replace jiocloud/master with this branch.
+
+If a new change is found at jiocloud/devmaster:
+  
